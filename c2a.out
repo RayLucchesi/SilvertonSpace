@@ -1,0 +1,83 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error: expected expression, found `let` statement
+   --> boards/rp-pico/examples/b_dactest_int.rs:122:24
+    |
+122 |                        let _ = alarm.schedul(SLOW_BLINK_INTERVAL_US * 5),
+    |                        ^^^
+
+error: expected expression, found statement (`let`)
+   --> boards/rp-pico/examples/b_dactest_int.rs:122:24
+    |
+122 |                        let _ = alarm.schedul(SLOW_BLINK_INTERVAL_US * 5),
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: variable declaration using `let` is a statement
+
+error[E0412]: cannot find type `dac` in this scope
+  --> boards/rp-pico/examples/b_dactest_int.rs:91:5
+   |
+91 |     dac, // dac component 
+   |     ^^^ not found in this scope
+
+error[E0412]: cannot find type `idx` in this scope
+  --> boards/rp-pico/examples/b_dactest_int.rs:92:5
+   |
+92 |     idx , // idx into sin_table
+   |     ^^^ not found in this scope
+
+error[E0412]: cannot find type `count` in this scope
+  --> boards/rp-pico/examples/b_dactest_int.rs:93:5
+   |
+93 |     count , // number of times we have entered interupt handler
+   |     ^^^^^ not found in this scope
+
+error[E0425]: cannot find value `led` in this scope
+   --> boards/rp-pico/examples/b_dactest_int.rs:134:45
+    |
+134 |                     .replace_with(|_| Some((led, alarm, dac, idx, count)));
+    |                                             ^^^ not found in this scope
+
+error[E0425]: cannot find value `timer` in this scope
+   --> boards/rp-pico/examples/b_dactest_int.rs:226:25
+    |
+226 |         let mut alarm = timer.alarm_0().unwrap();
+    |                         ^^^^^ not found in this scope
+
+error[E0658]: `let` expressions in this position are unstable
+   --> boards/rp-pico/examples/b_dactest_int.rs:122:24
+    |
+122 |                        let _ = alarm.schedul(SLOW_BLINK_INTERVAL_US * 5),
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: see issue #53667 <https://github.com/rust-lang/rust/issues/53667> for more information
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_dactest_int.rs:8:5
+  |
+8 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_dactest_int.rs:22:35
+   |
+22 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_dactest_int.rs:13:5
+   |
+13 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `rp2040_hal::timer::Alarm`
+  --> boards/rp-pico/examples/b_dactest_int.rs:17:5
+   |
+17 | use rp2040_hal::timer::Alarm;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+Some errors have detailed explanations: E0412, E0425, E0658.
+For more information about an error, try `rustc --explain E0412`.
+warning: `rp-pico` (example "b_dactest_int") generated 4 warnings
+error: could not compile `rp-pico` due to 8 previous errors; 4 warnings emitted

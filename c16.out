@@ -1,0 +1,67 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error[E0412]: cannot find type `I2C1` in this scope
+  --> boards/rp-pico/examples/b_blinky.rs:92:38
+   |
+92 |     mcp4725::MCP4725<rp2040_hal::I2C<I2C1, (rp2040_hal::gpio::Pin<Gpio26, rp2040_hal::gpio::Function<rp2040_hal::gpio::I2C>>, rp2040_hal:...
+   |                                      ^^^^ not found in this scope
+   |
+help: consider importing this struct
+   |
+6  | use crate::pac::I2C1;
+   |
+
+error[E0412]: cannot find type `Gpio26` in this scope
+  --> boards/rp-pico/examples/b_blinky.rs:92:67
+   |
+92 |     mcp4725::MCP4725<rp2040_hal::I2C<I2C1, (rp2040_hal::gpio::Pin<Gpio26, rp2040_hal::gpio::Function<rp2040_hal::gpio::I2C>>, rp2040_hal:...
+   |                                                                   ^^^^^^ not found in this scope
+   |
+help: consider importing one of these items
+   |
+6  | use crate::hal::gpio::bank0::Gpio26;
+   |
+6  | use rp2040_hal::gpio::bank0::Gpio26;
+   |
+
+error[E0412]: cannot find type `Gpio27` in this scope
+  --> boards/rp-pico/examples/b_blinky.rs:92:149
+   |
+92 | ...tion<rp2040_hal::gpio::I2C>>, rp2040_hal::gpio::Pin<Gpio27, rp2040_hal::gpio::Function<rp2040_hal::gpio::I2C>>)>>,
+   |                                                        ^^^^^^ not found in this scope
+   |
+help: consider importing one of these items
+   |
+6  | use crate::hal::gpio::bank0::Gpio27;
+   |
+6  | use rp2040_hal::gpio::bank0::Gpio27;
+   |
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky.rs:10:5
+   |
+10 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky.rs:21:35
+   |
+21 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_blinky.rs:11:5
+   |
+11 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0412`.
+warning: `rp-pico` (example "b_blinky") generated 4 warnings
+error: could not compile `rp-pico` due to 3 previous errors; 4 warnings emitted

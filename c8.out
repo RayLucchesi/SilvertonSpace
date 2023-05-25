@@ -1,0 +1,49 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error: expected one of `!`, `)`, `+`, `,`, or `::`, found `;`
+  --> boards/rp-pico/examples/b_blinky.rs:92:61
+   |
+92 |     rp2040_hal::I2C<rp2040_hal::i2c, rp2040_hal::gpio::Pins>;
+   |                                                             ^ expected one of `!`, `)`, `+`, `,`, or `::`
+
+error[E0573]: expected type, found module `rp2040_hal::i2c`
+   --> boards/rp-pico/examples/b_blinky.rs:92:21
+    |
+92  |     rp2040_hal::I2C<rp2040_hal::i2c, rp2040_hal::gpio::Pins>;
+    |                     ^^^^^^^^^^^^---
+    |                                 |
+    |                                 help: a struct with a similar name exists (notice the capitalization): `I2C`
+    |
+   ::: /home/pi/.cargo/registry/src/github.com-1285ae84e5963aae/rp2040-hal-0.8.1/src/i2c.rs:213:1
+    |
+213 | pub struct I2C<I2C, Pins, Mode = Controller> {
+    | -------------------------------------------- similarly named struct `I2C` defined here
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky.rs:10:5
+   |
+10 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky.rs:21:35
+   |
+21 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_blinky.rs:11:5
+   |
+11 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0573`.
+warning: `rp-pico` (example "b_blinky") generated 4 warnings
+error: could not compile `rp-pico` due to 2 previous errors; 4 warnings emitted

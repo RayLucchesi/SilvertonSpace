@@ -1,0 +1,59 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error: expected one of `!`, `(`, `)`, `+`, `,`, `::`, or `<`, found `;`
+  --> boards/rp-pico/examples/b_blinky.rs:92:17
+   |
+92 |     mcp4725::I2C;
+   |                 ^ expected one of 7 possible tokens
+
+error[E0412]: cannot find type `I2C` in crate `mcp4725`
+  --> boards/rp-pico/examples/b_blinky.rs:92:14
+   |
+92 |     mcp4725::I2C;
+   |              ^^^ not found in `mcp4725`
+   |
+help: consider importing one of these items
+   |
+6  | use crate::hal::I2C;
+   |
+6  | use crate::hal::gpio::I2C;
+   |
+6  | use i2c_pio::I2C;
+   |
+6  | use rp2040_hal::I2C;
+   |
+     and 1 other candidate
+help: if you import `I2C`, refer to it directly
+   |
+92 -     mcp4725::I2C;
+92 +     I2C;
+   |
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky.rs:10:5
+   |
+10 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky.rs:21:35
+   |
+21 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_blinky.rs:11:5
+   |
+11 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0412`.
+warning: `rp-pico` (example "b_blinky") generated 4 warnings
+error: could not compile `rp-pico` due to 2 previous errors; 4 warnings emitted

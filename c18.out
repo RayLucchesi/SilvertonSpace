@@ -1,0 +1,39 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky.rs:10:5
+   |
+10 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky.rs:21:35
+   |
+21 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+error[E0277]: the trait bound `rp_pico::rp2040_pac::i2c0::RegisterBlock: Deref` is not satisfied
+   --> boards/rp-pico/examples/b_blinky.rs:113:56
+    |
+113 | static mut LED_AND_ALARM_AND_DAC: Mutex<RefCell<Option<LedAndAlarmAndDac>>> = Mutex::new(RefCell::new(None));
+    |                                                        ^^^^^^^^^^^^^^^^^ the trait `Deref` is not implemented for `rp_pico::rp2040_pac::i2c0::RegisterBlock`
+    |
+    = help: the trait `_embedded_hal_blocking_i2c_Read` is implemented for `rp2040_hal::I2C<T, PINS>`
+    = note: required for `I2C<RegisterBlock, (Pin<Gpio26, Function<I2C>>, Pin<Gpio27, Function<I2C>>)>` to implement `_embedded_hal_blocking_i2c_Read`
+    = note: the full type name has been written to '/home/pi/rp-hal-boards/target/thumbv6m-none-eabi/release/examples/b_blinky-12516c690e1deb96.long-type-11102749033490847615.txt'
+note: required by a bound in `mcp4725::MCP4725`
+   --> /home/pi/.cargo/registry/src/github.com-1285ae84e5963aae/mcp4725-0.4.2/src/lib.rs:60:10
+    |
+60  |     I2C: Read + Write,
+    |          ^^^^ required by this bound in `MCP4725`
+
+For more information about this error, try `rustc --explain E0277`.
+warning: `rp-pico` (example "b_blinky") generated 3 warnings
+error: could not compile `rp-pico` due to previous error; 3 warnings emitted

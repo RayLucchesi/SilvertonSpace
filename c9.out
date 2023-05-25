@@ -1,0 +1,52 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error: expected one of `!`, `)`, `+`, `,`, or `::`, found `;`
+  --> boards/rp-pico/examples/b_blinky.rs:92:68
+   |
+92 |     rp2040_hal::I2C<rp2040_hal::i2c::Block, rp2040_hal::gpio::Pins>;
+   |                                                                    ^ expected one of `!`, `)`, `+`, `,`, or `::`
+
+error[E0412]: cannot find type `Block` in module `rp2040_hal::i2c`
+  --> boards/rp-pico/examples/b_blinky.rs:92:38
+   |
+92 |     rp2040_hal::I2C<rp2040_hal::i2c::Block, rp2040_hal::gpio::Pins>;
+   |                                      ^^^^^ not found in `rp2040_hal::i2c`
+   |
+help: consider importing this struct
+   |
+6  | use embedded_sdmmc::Block;
+   |
+help: if you import `Block`, refer to it directly
+   |
+92 -     rp2040_hal::I2C<rp2040_hal::i2c::Block, rp2040_hal::gpio::Pins>;
+92 +     rp2040_hal::I2C<Block, rp2040_hal::gpio::Pins>;
+   |
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky.rs:10:5
+   |
+10 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky.rs:21:35
+   |
+21 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_blinky.rs:11:5
+   |
+11 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0412`.
+warning: `rp-pico` (example "b_blinky") generated 4 warnings
+error: could not compile `rp-pico` due to 2 previous errors; 4 warnings emitted

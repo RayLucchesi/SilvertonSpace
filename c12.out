@@ -1,0 +1,62 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error[E0412]: cannot find type `RegisterBlock` in crate `pac`
+  --> boards/rp-pico/examples/b_blinky.rs:92:26
+   |
+92 |     rp2040_hal::I2C<pac::RegisterBlock, rp2040_hal::gpio::Pins>,
+   |                          ^^^^^^^^^^^^^
+   |
+  ::: /home/pi/.cargo/registry/src/github.com-1285ae84e5963aae/rp2040-pac-0.4.0/src/generic.rs:3:1
+   |
+3  | pub trait RegisterSpec {
+   | ---------------------- similarly named trait `RegisterSpec` defined here
+   |
+help: a trait with a similar name exists
+   |
+92 |     rp2040_hal::I2C<pac::RegisterSpec, rp2040_hal::gpio::Pins>,
+   |                          ~~~~~~~~~~~~
+help: consider importing one of these items
+   |
+6  | use cortex_m::peripheral::cpuid::RegisterBlock;
+   |
+6  | use cortex_m::peripheral::dcb::RegisterBlock;
+   |
+6  | use cortex_m::peripheral::dwt::RegisterBlock;
+   |
+6  | use cortex_m::peripheral::icb::RegisterBlock;
+   |
+     and 35 other candidates
+help: if you import `RegisterBlock`, refer to it directly
+   |
+92 -     rp2040_hal::I2C<pac::RegisterBlock, rp2040_hal::gpio::Pins>,
+92 +     rp2040_hal::I2C<RegisterBlock, rp2040_hal::gpio::Pins>,
+   |
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky.rs:10:5
+   |
+10 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky.rs:21:35
+   |
+21 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_blinky.rs:11:5
+   |
+11 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0412`.
+warning: `rp-pico` (example "b_blinky") generated 4 warnings
+error: could not compile `rp-pico` due to previous error; 4 warnings emitted

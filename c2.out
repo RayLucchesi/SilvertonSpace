@@ -1,0 +1,49 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+error[E0412]: cannot find type `I2C0` in crate `hal`
+   --> boards/rp-pico/examples/b_dactest_int.rs:91:18
+    |
+91  |     MCP4725<hal::I2C0>, // dac component 
+    |                  ^^^^
+    |
+   ::: /home/pi/.cargo/registry/src/github.com-1285ae84e5963aae/rp2040-hal-0.8.1/src/i2c.rs:213:1
+    |
+213 | pub struct I2C<I2C, Pins, Mode = Controller> {
+    | -------------------------------------------- similarly named struct `I2C` defined here
+    |
+help: a struct with a similar name exists
+    |
+91  |     MCP4725<hal::I2C>, // dac component 
+    |                  ~~~
+help: consider importing this struct
+    |
+6   | use crate::pac::I2C0;
+    |
+help: if you import `I2C0`, refer to it directly
+    |
+91  -     MCP4725<hal::I2C0>, // dac component 
+91  +     MCP4725<I2C0>, // dac component 
+    |
+
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_dactest_int.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_dactest_int.rs:20:35
+   |
+20 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_dactest_int.rs:11:5
+   |
+11 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0412`.
+warning: `rp-pico` (example "b_dactest_int") generated 3 warnings
+error: could not compile `rp-pico` due to previous error; 3 warnings emitted

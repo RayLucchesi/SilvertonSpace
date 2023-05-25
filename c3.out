@@ -1,0 +1,68 @@
+   Compiling rp-pico v0.7.0 (/home/pi/rp-hal-boards/boards/rp-pico)
+warning: unused import: `core::fmt::Write as FmtWrite`
+ --> boards/rp-pico/examples/b_blinky2.rs:6:5
+  |
+6 | use core::fmt::Write as FmtWrite;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `rp_pico::entry`
+  --> boards/rp-pico/examples/b_blinky2.rs:13:5
+   |
+13 | use rp_pico::entry;
+   |     ^^^^^^^^^^^^^^
+
+warning: unused imports: `Operation`, `Read`, `Transactional`, `WriteIter`, `Write`
+  --> boards/rp-pico/examples/b_blinky2.rs:24:35
+   |
+24 | use embedded_hal::blocking::i2c::{Operation, Read, Transactional, Write, WriteIter};
+   |                                   ^^^^^^^^^  ^^^^  ^^^^^^^^^^^^^  ^^^^^  ^^^^^^^^^
+
+warning: unused import: `embedded_hal::digital::v2::OutputPin`
+  --> boards/rp-pico/examples/b_blinky2.rs:14:5
+   |
+14 | use embedded_hal::digital::v2::OutputPin;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `dac`
+   --> boards/rp-pico/examples/b_blinky2.rs:192:17
+    |
+192 |         let mut dac = MCP4725::new(i2c, 0b000);  // uses address 000 binary 
+    |                 ^^^ help: if this is intentional, prefix it with an underscore: `_dac`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: variable does not need to be mutable
+   --> boards/rp-pico/examples/b_blinky2.rs:192:13
+    |
+192 |         let mut dac = MCP4725::new(i2c, 0b000);  // uses address 000 binary 
+    |             ----^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+error[E0382]: borrow of moved value: `alarm`
+   --> boards/rp-pico/examples/b_blinky2.rs:205:9
+    |
+194 |         let mut alarm = timer.alarm_0().unwrap();
+    |             --------- move occurs because `alarm` has type `Alarm0`, which does not implement the `Copy` trait
+...
+201 |             LED_AND_ALARM_AND_DAC.borrow(cs).replace(Some((led_pin, alarm)));
+    |                                                                     ----- value moved here
+...
+205 |         alarm.enable_interrupt();
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^ value borrowed here after move
+
+warning: variable does not need to be mutable
+   --> boards/rp-pico/examples/b_blinky2.rs:177:8
+    |
+177 |    let mut i2c = hal::I2C::i2c1(
+    |        ----^^^
+    |        |
+    |        help: remove this `mut`
+
+For more information about this error, try `rustc --explain E0382`.
+warning: `rp-pico` (example "b_blinky2") generated 7 warnings
+error: could not compile `rp-pico` due to previous error; 7 warnings emitted
