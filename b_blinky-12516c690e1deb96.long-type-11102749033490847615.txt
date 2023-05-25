@@ -1,0 +1,1 @@
+rp2040_hal::I2C<rp_pico::rp2040_pac::i2c0::RegisterBlock, (rp2040_hal::gpio::Pin<Gpio26, rp2040_hal::gpio::Function<rp2040_hal::gpio::I2C>>, rp2040_hal::gpio::Pin<Gpio27, rp2040_hal::gpio::Function<rp2040_hal::gpio::I2C>>)>
